@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ta_bloc/models/Movie.dart';
 import 'package:ta_bloc/services/MovieService.dart';
+
+import 'bloc/theme_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,12 +12,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'BLoC',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return BlocProvider(
+      create: (context) => ThemeBloc(),
+      child: MaterialApp(
+        title: 'BLoC',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(title: 'BLoC'),
       ),
-      home: MyHomePage(title: 'BLoC'),
     );
   }
 }
@@ -53,10 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         actions: [
           PopupMenuButton<int>(
-            itemBuilder: (context)=>[
+            onSelected: (item)=>onSelected(context,item),
+            itemBuilder: (context) => [
               PopupMenuItem<int>(
                 value: 0,
                 child: Text('Ubah warna text synopsis'),
+
               ),
             ],
           )
@@ -146,16 +154,38 @@ class _MyHomePageState extends State<MyHomePage> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              snapshots.data[index].title
-                                                      .toString() +
-                                                  " " +
-                                                  snapshots.data[index].id
-                                                      .toString(),
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20,
-                                              ),
+                                            BlocBuilder<ThemeBloc, ThemeState>(
+                                              builder: (context, state) {
+                                                if (state
+                                                    is ThemeTextYellow) {
+                                                  return Text(
+                                                    snapshots.data[index].title
+                                                            .toString() +
+                                                        " " +
+                                                        snapshots.data[index].id
+                                                            .toString(),
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20,
+                                                      color: Colors.yellow,
+                                                    ),
+                                                  );
+                                                } else {
+                                                  return Text(
+                                                    snapshots.data[index].title
+                                                            .toString() +
+                                                        " " +
+                                                        snapshots.data[index].id
+                                                            .toString(),
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20,
+                                                    ),
+                                                  );
+                                                }
+                                              },
                                             ),
                                             SizedBox(
                                               height: 5,
@@ -201,5 +231,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+
+  onSelected(BuildContext context, int item) {
+    switch(item){
+      case 0:
+        final themeBloc = context.read<ThemeBloc>();
+        themeBloc.add(ThemeChangeTextToYellow());
+        break;
+    }
   }
 }
