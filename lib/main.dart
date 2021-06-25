@@ -135,107 +135,107 @@ class _MyHomePageState extends State<MyHomePage> {
                         return Text(
                             'Error while retrieving data from database');
                       } else if (snapshots.hasData) {
-//                        return ListView(
-//                          addAutomaticKeepAlives: true,
-//                          children: [
-//                            for (var i in snapshots.data)
-//                              Card(
-//                                elevation: 5,
-//                                child: Row(
-//                                  children: [
-//                                    Flexible(
-//                                      flex: 1,
-//                                      child: Container(
-//                                        height: 120,
-//                                        color: Colors.lightBlue,
-//                                      ),
-//                                    ),
-//                                    Flexible(
-//                                      flex: 2,
-//                                      child: Padding(
-//                                        padding: const EdgeInsets.all(8.0),
-//                                        child: Column(
-//                                          crossAxisAlignment:
-//                                              CrossAxisAlignment.start,
-//                                          children: [
-//                                            BlocBuilder<ThemeBloc, ThemeState>(
-//                                              builder: (context, state) {
-//                                                if (state is ThemeTextYellow) {
-//                                                  return Text(
-//                                                    i.title.toString() +
-//                                                        " " +
-//                                                        i.id.toString(),
-//                                                    style: TextStyle(
-//                                                      fontWeight:
-//                                                          FontWeight.bold,
-//                                                      fontSize: 20,
-//                                                      color: Colors.yellow,
-//                                                    ),
-//                                                  );
-//                                                } else if (state
-//                                                    is ThemeTextBlack) {
-//                                                  return Text(
-//                                                    i.title.toString() +
-//                                                        " " +
-//                                                        i.id.toString(),
-//                                                    style: TextStyle(
-//                                                      fontWeight:
-//                                                          FontWeight.bold,
-//                                                      fontSize: 20,
-//                                                      color: Colors.black,
-//                                                    ),
-//                                                  );
-//                                                } else {
-//                                                  return Text(
-//                                                    i.title.toString() +
-//                                                        " " +
-//                                                        i.id.toString(),
-//                                                    style: TextStyle(
-//                                                      fontWeight:
-//                                                          FontWeight.bold,
-//                                                      fontSize: 20,
-//                                                    ),
-//                                                  );
-//                                                }
-//                                              },
-//                                            ),
-//                                            SizedBox(
-//                                              height: 5,
-//                                            ),
-//                                            Container(
-//                                              decoration: BoxDecoration(
-//                                                borderRadius: BorderRadius.all(
-//                                                    Radius.circular(20)),
-//                                                color: Colors.amber,
-//                                              ),
-//                                              child: Padding(
-//                                                padding:
-//                                                    const EdgeInsets.all(8.0),
-//                                                child: Text(
-//                                                  i.genre.toString(),
-//                                                  style: TextStyle(
-//                                                    color: Colors.white,
-//                                                  ),
-//                                                ),
-//                                              ),
-//                                            ),
-//                                            SizedBox(
-//                                              height: 5,
-//                                            ),
-//                                            Text(i.synopsis.toString()),
-//                                          ],
-//                                        ),
-//                                      ),
-//                                    )
-//                                  ],
-//                                ),
-//                              )
-//                          ],
-//                        );
-                        return ListView.builder(
-                            itemCount: snapshots.data.length,
-                            itemBuilder: (context, index) {
-                              return Card(
+                        return Column(
+                          children: [
+                            for (var i in snapshots.data)
+                            Card(
+                              elevation: 5,
+                              child: Row(
+                                children: [
+                                  Flexible(
+                                    flex: 1,
+                                    child: Container(
+                                      height: 120,
+                                      color: Colors.lightBlue,
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 2,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          BlocBuilder<ThemeBloc, ThemeState>(
+                                            builder: (context, state) {
+                                              if (state is ThemeTextYellow) {
+                                                return Text(
+                                                  i.title.toString() +
+                                                      " " +
+                                                      i.id.toString(),
+                                                  style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                    fontSize: 20,
+                                                    color: Colors.yellow,
+                                                  ),
+                                                );
+                                              } else if (state
+                                              is ThemeTextBlack) {
+                                                return Text(
+                                                  i.title.toString() +
+                                                      " " +
+                                                      i.id.toString(),
+                                                  style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                    fontSize: 20,
+                                                    color: Colors.black,
+                                                  ),
+                                                );
+                                              } else {
+                                                return Text(
+                                                  i.title.toString() +
+                                                      " " +
+                                                      i.id.toString(),
+                                                  style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                    fontSize: 20,
+                                                  ),
+                                                );
+                                              }
+                                            },
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                              color: Colors.amber,
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                              const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                i.genre.toString(),
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(i.synopsis.toString()),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        );
+                        return ListView(
+                          addAutomaticKeepAlives: true,
+                          children: [
+                            for (var i in snapshots.data)
+                              Card(
                                 elevation: 5,
                                 child: Row(
                                   children: [
@@ -258,11 +258,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                               builder: (context, state) {
                                                 if (state is ThemeTextYellow) {
                                                   return Text(
-                                                    snapshots.data[index].title
-                                                            .toString() +
+                                                    i.title.toString() +
                                                         " " +
-                                                        snapshots.data[index].id
-                                                            .toString(),
+                                                        i.id.toString(),
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -270,27 +268,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       color: Colors.yellow,
                                                     ),
                                                   );
-                                                } else if(state is ThemeTextBlack){
+                                                } else if (state
+                                                    is ThemeTextBlack) {
                                                   return Text(
-                                                    snapshots.data[index].title
-                                                        .toString() +
+                                                    i.title.toString() +
                                                         " " +
-                                                        snapshots.data[index].id
-                                                            .toString(),
+                                                        i.id.toString(),
                                                     style: TextStyle(
                                                       fontWeight:
-                                                      FontWeight.bold,
+                                                          FontWeight.bold,
                                                       fontSize: 20,
                                                       color: Colors.black,
                                                     ),
                                                   );
-                                                }else {
+                                                } else {
                                                   return Text(
-                                                    snapshots.data[index].title
-                                                            .toString() +
+                                                    i.title.toString() +
                                                         " " +
-                                                        snapshots.data[index].id
-                                                            .toString(),
+                                                        i.id.toString(),
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -313,8 +308,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 padding:
                                                     const EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  snapshots.data[index].genre
-                                                      .toString(),
+                                                  i.genre.toString(),
                                                   style: TextStyle(
                                                     color: Colors.white,
                                                   ),
@@ -324,14 +318,134 @@ class _MyHomePageState extends State<MyHomePage> {
                                             SizedBox(
                                               height: 5,
                                             ),
-                                            Text(snapshots.data[index].synopsis
-                                                .toString()),
+                                            Text(i.synopsis.toString()),
                                           ],
                                         ),
                                       ),
                                     )
                                   ],
                                 ),
+                              )
+                          ],
+                        );
+                        return ListView.builder(
+                            itemCount: snapshots.data.length,
+                            itemBuilder: (context, index) {
+                              return BlocBuilder<ThemeBloc, ThemeState>(
+                                builder: (context, state) {
+                                  return Card(
+                                    elevation: 5,
+                                    child: Row(
+                                      children: [
+                                        Flexible(
+                                          flex: 1,
+                                          child: Container(
+                                            height: 120,
+                                            color: Colors.lightBlue,
+                                          ),
+                                        ),
+                                        Flexible(
+                                          flex: 2,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                BlocBuilder<ThemeBloc,
+                                                    ThemeState>(
+                                                  builder: (context, state) {
+                                                    if (state
+                                                        is ThemeTextYellow) {
+                                                      return Text(
+                                                        snapshots.data[index]
+                                                                .title
+                                                                .toString() +
+                                                            " " +
+                                                            snapshots
+                                                                .data[index].id
+                                                                .toString(),
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Colors.yellow,
+                                                        ),
+                                                      );
+                                                    } else if (state
+                                                        is ThemeTextBlack) {
+                                                      return Text(
+                                                        snapshots.data[index]
+                                                                .title
+                                                                .toString() +
+                                                            " " +
+                                                            snapshots
+                                                                .data[index].id
+                                                                .toString(),
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Colors.black,
+                                                        ),
+                                                      );
+                                                    } else {
+                                                      return Text(
+                                                        snapshots.data[index]
+                                                                .title
+                                                                .toString() +
+                                                            " " +
+                                                            snapshots
+                                                                .data[index].id
+                                                                .toString(),
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                        ),
+                                                      );
+                                                    }
+                                                  },
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                20)),
+                                                    color: Colors.amber,
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      snapshots
+                                                          .data[index].genre
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(snapshots
+                                                    .data[index].synopsis
+                                                    .toString()),
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                },
                               );
                             });
                       } else {
@@ -358,4 +472,6 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
     }
   }
+
+
 }
