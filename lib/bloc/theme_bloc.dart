@@ -14,20 +14,22 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   Stream<ThemeState> mapEventToState(
     ThemeEvent event,
   ) async* {
-    if(event is ThemeChangeTextToYellow){
-      yield ThemeTextYellow();
+    if(event is ThemeChangeTextToPurple){
+      yield ThemeTextPurple();
     }else if(event is ThemeChangeTextToBlack){
       yield ThemeTextBlack();
     }else if(event is ThemeChangeTextFontArial){
       yield ThemeTextFontArial();
+    }else if(event is ThemeChangeTextFontRoboto){
+      yield ThemeTextFontRoboto();
     }else if(event is ThemeChangeTextFontLarge){
       yield ThemeTextFontLarge();
     }else if(event is ThemeChangeTextFontSmall){
       yield ThemeTextFontSmall();
-    }else if(event is ThemeChangeCardBackgroundBlue){
-      yield ThemeCardBackgroundBlue();
-    }else if(event is ThemeChangeCardBackgroundYellow){
-      yield ThemeCardBackgroundYellow();
+    }else if(event is ThemeChangeCardBackgroundWhite){
+      yield ThemeCardBackgroundWhite();
+    }else if(event is ThemeChangeCardBackgroundPurple){
+      yield ThemeCardBackgroundPurple();
     }
   }
 

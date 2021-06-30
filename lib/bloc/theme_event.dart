@@ -5,8 +5,8 @@ abstract class ThemeEvent {
   ThemeEvent();
 }
 
-class ThemeChangeTextToYellow extends ThemeEvent{
-  ThemeChangeTextToYellow();
+class ThemeChangeTextToPurple extends ThemeEvent{
+  ThemeChangeTextToPurple();
 }
 class ThemeChangeTextToBlack extends ThemeEvent{
   ThemeChangeTextToBlack();
@@ -14,6 +14,9 @@ class ThemeChangeTextToBlack extends ThemeEvent{
 
 class ThemeChangeTextFontArial extends ThemeEvent {
   ThemeChangeTextFontArial();
+}
+class ThemeChangeTextFontRoboto extends ThemeEvent {
+  ThemeChangeTextFontRoboto();
 }
 
 class ThemeChangeTextFontLarge extends ThemeEvent {
@@ -24,10 +27,10 @@ class ThemeChangeTextFontSmall extends ThemeEvent {
   ThemeChangeTextFontSmall();
 }
 
-class ThemeChangeCardBackgroundBlue extends ThemeEvent {
-  ThemeChangeCardBackgroundBlue();
+class ThemeChangeCardBackgroundWhite extends ThemeEvent {
+  ThemeChangeCardBackgroundWhite();
 }
 
-class ThemeChangeCardBackgroundYellow extends ThemeEvent {
-  ThemeChangeCardBackgroundYellow();
+class ThemeChangeCardBackgroundPurple extends ThemeEvent {
+  ThemeChangeCardBackgroundPurple();
 }

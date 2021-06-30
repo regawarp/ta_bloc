@@ -9,8 +9,8 @@ class ThemeInitial extends ThemeState {
   ThemeInitial();
 }
 
-class ThemeTextYellow extends ThemeState {
-  ThemeTextYellow();
+class ThemeTextPurple extends ThemeState {
+  ThemeTextPurple();
 }
 
 class ThemeTextBlack extends ThemeState {
@@ -21,6 +21,10 @@ class ThemeTextFontArial extends ThemeState {
   ThemeTextFontArial();
 }
 
+class ThemeTextFontRoboto extends ThemeState {
+  ThemeTextFontRoboto();
+}
+
 class ThemeTextFontLarge extends ThemeState {
   ThemeTextFontLarge();
 }
@@ -29,10 +33,10 @@ class ThemeTextFontSmall extends ThemeState {
   ThemeTextFontSmall();
 }
 
-class ThemeCardBackgroundBlue extends ThemeState {
-  ThemeCardBackgroundBlue();
+class ThemeCardBackgroundWhite extends ThemeState {
+  ThemeCardBackgroundWhite();
 }
 
-class ThemeCardBackgroundYellow extends ThemeState {
-  ThemeCardBackgroundYellow();
+class ThemeCardBackgroundPurple extends ThemeState {
+  ThemeCardBackgroundPurple();
 }
