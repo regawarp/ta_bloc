@@ -4,6 +4,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:ta_bloc/models/Movie.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 class DatabaseConnection {
   setDatabase() async {
@@ -25,14 +27,19 @@ class DatabaseConnection {
     await db.execute(
         "CREATE TABLE movies(id INTEGER PRIMARY KEY, title TEXT, synopsis TEXT, image TEXT, genre TEXT, rating INTEGER)");
     print("Database recreated");
+    final String response = await rootBundle.loadString(
+        'assets/json/movies.json');
+    final data = await json.decode(response);
+    List<dynamic> movieList = data;
+
     for (var i = 0; i < 10000; i++) {
       var movie = Movie(
-          i,
-          "Spiderman",
-          "This movie is about a teenager that turns into",
-          "image.jp",
-          "Action",
-          1);
+        movieList[i]['id'],
+        movieList[i]['title'].toString(),
+        movieList[i]['synopsis'].toString(),
+        movieList[i]['image'].toString(),
+        movieList[i]['genre'].toString(),
+      );
       await db.insert('movies', movie.toMap());
     }
   }

@@ -34,3 +34,11 @@ class ThemeChangeCardBackgroundWhite extends ThemeEvent {
 class ThemeChangeCardBackgroundPurple extends ThemeEvent {
   ThemeChangeCardBackgroundPurple();
 }
+
+class ThemeChangeImageSmall extends ThemeEvent{
+  ThemeChangeImageSmall();
+}
+
+class ThemeChangeImageLarge extends ThemeEvent{
+  ThemeChangeImageLarge();
+}

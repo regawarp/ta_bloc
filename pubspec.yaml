@@ -26,6 +26,7 @@ dependencies:
   sqflite: ^1.3.0+2
   path_provider: ^1.6.7
   flutter_bloc: ^6.1.3
+  readmore: ^1.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -46,6 +47,16 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/json/
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+    - family: Arial
+      fonts:
+        - asset: assets/fonts/arial.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:

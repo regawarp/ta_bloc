@@ -6,10 +6,9 @@ class Movie {
   final String synopsis;
   final String image;
   final String genre;
-  final int rating;
 
   Movie(
-      this.id, this.title, this.synopsis, this.image, this.genre, this.rating);
+      this.id, this.title, this.synopsis, this.image, this.genre);
 
   toMap() {
     var mapping = Map<String, dynamic>();
@@ -18,7 +17,6 @@ class Movie {
     mapping['synopsis'] = synopsis;
     mapping['image'] = image;
     mapping['genre'] = genre;
-    mapping['rating'] = rating;
     return mapping;
   }
 }

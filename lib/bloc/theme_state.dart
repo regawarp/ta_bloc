@@ -40,3 +40,11 @@ class ThemeCardBackgroundWhite extends ThemeState {
 class ThemeCardBackgroundPurple extends ThemeState {
   ThemeCardBackgroundPurple();
 }
+
+class ThemeImageSmall extends ThemeState{
+  ThemeImageSmall();
+}
+
+class ThemeImageLarge extends ThemeState{
+  ThemeImageLarge();
+}

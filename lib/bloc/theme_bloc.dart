@@ -30,6 +30,10 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       yield ThemeCardBackgroundWhite();
     }else if(event is ThemeChangeCardBackgroundPurple){
       yield ThemeCardBackgroundPurple();
+    }else if(event is ThemeChangeImageSmall){
+      yield ThemeImageSmall();
+    }else if(event is ThemeChangeImageLarge){
+      yield ThemeImageLarge();
     }
   }
 
