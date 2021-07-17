@@ -374,21 +374,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       } else if (state
                                                           is ThemeTextFontLarge) {
                                                         themeFontSize = 20;
+                                                      } else if(state is ThemeTextFontArial){
+                                                        themeFontFamily = "Arial";
+                                                      } else if(state is ThemeTextFontRoboto){
+                                                        themeFontFamily = "Roboto";
                                                       }
-                                                      return ReadMoreText(
-                                                        i.synopsis.toString(),
-                                                        trimLines: 2,
-                                                        colorClickableText:
-                                                            Colors.pink,
-                                                        trimMode: TrimMode.Line,
-                                                        trimCollapsedText:
-                                                            'Show more',
-                                                        trimExpandedText:
-                                                            'Show less',
-                                                        style: TextStyle(
+                                                      return Text(
+                                                        i.synopsis,
+                                                        style:
+                                                        TextStyle(
                                                           fontSize: themeFontSize,
-                                                          fontFamily:
-                                                              themeFontFamily,
+                                                          fontFamily: themeFontFamily,
                                                         ),
                                                       );
                                                     },
