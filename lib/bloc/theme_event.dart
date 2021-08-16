@@ -5,40 +5,22 @@ abstract class ThemeEvent {
   ThemeEvent();
 }
 
-class ThemeChangeTextToPurple extends ThemeEvent{
-  ThemeChangeTextToPurple();
-}
-class ThemeChangeTextToBlack extends ThemeEvent{
-  ThemeChangeTextToBlack();
+class ThemeChangeCardBackgroundToPurple extends ThemeEvent {
+  ThemeChangeCardBackgroundToPurple();
 }
 
-class ThemeChangeTextFontArial extends ThemeEvent {
-  ThemeChangeTextFontArial();
-}
-class ThemeChangeTextFontRoboto extends ThemeEvent {
-  ThemeChangeTextFontRoboto();
+class ThemeChangeTitleFontToLarge extends ThemeEvent {
+  ThemeChangeTitleFontToLarge();
 }
 
-class ThemeChangeTextFontLarge extends ThemeEvent {
-  ThemeChangeTextFontLarge();
+class ThemeChangeTitleFontToPurple extends ThemeEvent {
+  ThemeChangeTitleFontToPurple();
 }
 
-class ThemeChangeTextFontSmall extends ThemeEvent {
-  ThemeChangeTextFontSmall();
+class ThemeChangeSynopsisFontToLarge extends ThemeEvent {
+  ThemeChangeSynopsisFontToLarge();
 }
 
-class ThemeChangeCardBackgroundWhite extends ThemeEvent {
-  ThemeChangeCardBackgroundWhite();
-}
-
-class ThemeChangeCardBackgroundPurple extends ThemeEvent {
-  ThemeChangeCardBackgroundPurple();
-}
-
-class ThemeChangeImageSmall extends ThemeEvent{
-  ThemeChangeImageSmall();
-}
-
-class ThemeChangeImageLarge extends ThemeEvent{
-  ThemeChangeImageLarge();
+class ThemeChangeSynopsisFontToPurple extends ThemeEvent {
+  ThemeChangeSynopsisFontToPurple();
 }

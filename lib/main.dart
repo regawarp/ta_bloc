@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => ThemeBloc(),
       child: MaterialApp(
-        title: 'BLoC',
+        title: 'MovDB - BLoC',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
@@ -41,10 +41,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<List<Movie>> _movieList;
   String dropdownValue = '1000';
   Color cardColor = Colors.white;
-  Color titleColor = Colors.black;
-  double themeFontSize = 10;
-  String themeFontFamily = "Arial";
-  List<double> imageSize = [100.0, 120.0];
+  Color titleFontColor = Colors.black;
+  Color synopsisFontColor = Colors.black;
+  double titleFontSize = 20;
+  double synopsisFontSize = 10;
 
   @override
   void initState() {
@@ -81,71 +81,36 @@ class _MyHomePageState extends State<MyHomePage> {
               PopupMenuItem<int>(
                 value: 0,
                 child: ListTile(
-                  leading: Icon(Icons.title),
-                  title: Text('Purple Title'),
+                  leading: Icon(Icons.widgets),
+                  title: Text('Ubah background item Card'),
                 ),
               ),
               PopupMenuItem<int>(
                 value: 1,
                 child: ListTile(
                   leading: Icon(Icons.title),
-                  title: Text('Black Title'),
+                  title: Text('Ubah font-size Title'),
                 ),
               ),
               PopupMenuItem<int>(
                 value: 2,
                 child: ListTile(
-                  leading: Icon(Icons.widgets),
-                  title: Text('White Card'),
+                  leading: Icon(Icons.title),
+                  title: Text('Ubah font-color Title'),
                 ),
               ),
               PopupMenuItem<int>(
                 value: 3,
                 child: ListTile(
-                  leading: Icon(Icons.widgets),
-                  title: Text('Purple Card'),
+                  leading: Icon(Icons.text_fields),
+                  title: Text('Ubah font-size Synopsis'),
                 ),
               ),
               PopupMenuItem<int>(
                 value: 4,
                 child: ListTile(
                   leading: Icon(Icons.text_fields),
-                  title: Text('Small Font'),
-                ),
-              ),
-              PopupMenuItem<int>(
-                value: 5,
-                child: ListTile(
-                  leading: Icon(Icons.format_size),
-                  title: Text('Large Font'),
-                ),
-              ),
-              PopupMenuItem<int>(
-                value: 6,
-                child: ListTile(
-                  leading: Icon(Icons.text_format),
-                  title: Text('Arial Font'),
-                ),
-              ),
-              PopupMenuItem<int>(
-                value: 7,
-                child: ListTile(
-                  leading: Icon(Icons.text_format),
-                  title: Text('Roboto Font'),
-                ),
-              ),
-              PopupMenuItem<int>(
-                value: 8,
-                child: ListTile(
-                  leading: Icon(Icons.zoom_out),
-                  title: Text('Small Picture'),
-                ),
-              ),
-              PopupMenuItem<int>(
-                value: 9,
-                child: ListTile(
-                  leading: Icon(Icons.zoom_in),
-                  title: Text('Large Picture'),
+                  title: Text('Ubah font-color Synopsis'),
                 ),
               ),
             ],
@@ -221,15 +186,11 @@ class _MyHomePageState extends State<MyHomePage> {
                               for (var i in snapshots.data)
                                 BlocBuilder<ThemeBloc, ThemeState>(
                                   buildWhen: (previous, current) {
-                                    return current is ThemeCardBackgroundPurple ||
-                                        current is ThemeCardBackgroundWhite;
+                                    return current is ThemeCardBackgroundPurple;
                                   },
                                   builder: (context, cardstate) {
                                     if (cardstate is ThemeCardBackgroundPurple) {
-                                      cardColor = Colors.purpleAccent;
-                                    } else if (cardstate
-                                        is ThemeCardBackgroundWhite) {
-                                      cardColor = Colors.white;
+                                      cardColor = Colors.purple;
                                     }
                                     return Card(
                                       color: cardColor,
@@ -238,23 +199,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                         children: [
                                           Flexible(
                                             flex: 1,
-                                            child: BlocBuilder<ThemeBloc,
-                                                ThemeState>(
-                                              buildWhen: (previous, current) {
-                                                return current
-                                                        is ThemeImageSmall ||
-                                                    current is ThemeImageLarge;
-                                              },
-                                              builder: (context, state) {
-                                                if (state is ThemeImageSmall) {
-                                                  imageSize = [100.0, 120.0];
-                                                } else if (state
-                                                    is ThemeImageLarge) {
-                                                  imageSize = [120.0, 140.0];
-                                                }
-                                                return Container(
-                                                  height: imageSize[1],
-                                                  width: imageSize[0],
+                                            child: Container(
+                                                  height: 120,
+                                                  width: 100,
                                                   decoration: BoxDecoration(
                                                     image: DecorationImage(
                                                         image: AssetImage(
@@ -262,10 +209,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         ),
                                                         fit: BoxFit.cover),
                                                   ),
-                                                );
-                                              },
+                                                ),
                                             ),
-                                          ),
                                           Flexible(
                                             flex: 2,
                                             child: Padding(
@@ -279,27 +224,26 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     buildWhen:
                                                         (previous, current) {
                                                       return current
-                                                              is ThemeTextPurple ||
+                                                              is ThemeTitleFontLarge ||
                                                           current
-                                                              is ThemeTextBlack;
+                                                              is ThemeTitleFontPurple;
                                                     },
                                                     builder: (context, state) {
                                                       /* masukin ke variable lalu buildnya di bawah condition*/
                                                       if (state
-                                                          is ThemeTextPurple) {
-                                                        titleColor =
-                                                            Colors.purple;
+                                                          is ThemeTitleFontLarge) {
+                                                        titleFontSize = 25;                                                            25;
                                                       } else if (state
-                                                          is ThemeTextBlack) {
-                                                        titleColor = Colors.black;
+                                                          is ThemeTitleFontPurple) {
+                                                        titleFontColor = Colors.purpleAccent;
                                                       }
                                                       return Text(
                                                         i.title.toString(),
                                                         style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold,
-                                                          fontSize: 20,
-                                                          color: titleColor,
+                                                          fontSize: titleFontSize,
+                                                          color: titleFontColor,
                                                         ),
                                                       );
                                                     },
@@ -319,38 +263,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       padding:
                                                           const EdgeInsets.all(
                                                               8.0),
-                                                      child: BlocBuilder<
-                                                          ThemeBloc, ThemeState>(
-                                                        buildWhen:
-                                                            (previous, current) {
-                                                          return current
-                                                                  is ThemeTextFontArial ||
-                                                              current
-                                                                  is ThemeTextFontRoboto;
-                                                        },
-                                                        builder:
-                                                            (context, state) {
-                                                          if (state
-                                                              is ThemeTextFontArial) {
-                                                            themeFontFamily =
-                                                                "Arial";
-                                                          } else if (state
-                                                              is ThemeTextFontRoboto) {
-                                                            themeFontFamily =
-                                                                "Roboto";
-                                                          }
-                                                          return Text(
+                                                      child: Text(
                                                             i.genre.toString(),
                                                             style: TextStyle(
                                                               color: Colors.white,
-                                                              fontFamily:
-                                                                  themeFontFamily,
                                                             ),
-                                                          );
-                                                        },
+                                                          ),
                                                       ),
                                                     ),
-                                                  ),
                                                   SizedBox(
                                                     height: 5,
                                                   ),
@@ -359,32 +279,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     buildWhen:
                                                         (previous, current) {
                                                       return current
-                                                              is ThemeTextFontSmall ||
+                                                              is ThemeSynopsisFontLarge ||
                                                           current
-                                                              is ThemeTextFontLarge ||
-                                                          current
-                                                              is ThemeTextFontArial ||
-                                                          current
-                                                              is ThemeTextFontRoboto;
+                                                              is ThemeSynopsisFontPurple;
                                                     },
                                                     builder: (context, state) {
                                                       if (state
-                                                          is ThemeTextFontSmall) {
-                                                        themeFontSize = 10;
+                                                          is ThemeSynopsisFontLarge) {
+                                                        synopsisFontSize = 20;
                                                       } else if (state
-                                                          is ThemeTextFontLarge) {
-                                                        themeFontSize = 20;
-                                                      } else if(state is ThemeTextFontArial){
-                                                        themeFontFamily = "Arial";
-                                                      } else if(state is ThemeTextFontRoboto){
-                                                        themeFontFamily = "Roboto";
+                                                          is ThemeSynopsisFontPurple) {
+                                                        synopsisFontColor = Colors.purpleAccent;
                                                       }
                                                       return Text(
                                                         i.synopsis,
                                                         style:
                                                         TextStyle(
-                                                          fontSize: themeFontSize,
-                                                          fontFamily: themeFontFamily,
+                                                          fontSize: synopsisFontSize,
+                                                          color: synopsisFontColor
                                                         ),
                                                       );
                                                     },
@@ -417,43 +329,23 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (item) {
       case 0:
         final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeTextToPurple());
+        themeBloc.add(ThemeChangeCardBackgroundToPurple());
         break;
       case 1:
         final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeTextToBlack());
+        themeBloc.add(ThemeChangeTitleFontToLarge());
         break;
       case 2:
         final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeCardBackgroundWhite());
+        themeBloc.add(ThemeChangeTitleFontToPurple());
         break;
       case 3:
         final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeCardBackgroundPurple());
+        themeBloc.add(ThemeChangeSynopsisFontToLarge());
         break;
       case 4:
         final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeTextFontSmall());
-        break;
-      case 5:
-        final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeTextFontLarge());
-        break;
-      case 6:
-        final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeTextFontArial());
-        break;
-      case 7:
-        final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeTextFontRoboto());
-        break;
-      case 8:
-        final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeImageSmall());
-        break;
-      case 9:
-        final themeBloc = context.read<ThemeBloc>();
-        themeBloc.add(ThemeChangeImageLarge());
+        themeBloc.add(ThemeChangeSynopsisFontToPurple());
         break;
     }
   }
