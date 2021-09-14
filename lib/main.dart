@@ -142,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     flex: 2,
                     child: DropdownButtonFormField<String>(
                       value: dropdownValue,
-                      items: <String>['1000', '5000', '10000']
+                      items: <String>['1000', '10000']
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
